@@ -1,14 +1,26 @@
-import Header from "./componentes/header/Header";
+import  "./estilos.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+//componentes//
+
+
+import Navbar from './componentes/header/Navbar';
+import ItemListContainer from './componentes/ItemListContainer/ItemListContainer';
 
 function App(){
+
+     
+
     return (
-
-        <Header/>
-
-    )
+            <>
+                <Navbar/>
+              
+                <ItemListContainer nombre= "ATIA"/>
+                
+        
+            </>
+         )
 
 }
 

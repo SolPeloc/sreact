@@ -3,3 +3,9 @@
     list-style: none;
 }
 
+.cartWidget{
+    margin-right: 15px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+}
