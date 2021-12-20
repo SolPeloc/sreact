@@ -24,7 +24,7 @@ const ItemCount = ({stock,initial,onAdd}) => {
 
     const AgregarCarrito=()=>{
         if (contador!==0){
-        onAdd()
+        onAdd(contador)
         }
         else{
             alert("tu carrito esta vacio")

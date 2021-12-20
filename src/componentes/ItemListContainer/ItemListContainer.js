@@ -1,17 +1,11 @@
 
 import React from 'react'
-import swal from 'sweetalert'
+import { Spinner } from 'react-bootstrap'
 
 //componentes//
-import ItemCount from '../ItemCount'
 import { useState,useEffect } from 'react'
 import ItemList from './ItemList'
 
-const onAdd=()=>{
-swal({ text:"añadido al carrito",
-        icon:"success" 
-        });
-}
 const productos=[
   {   
           "id":1,
@@ -37,43 +31,55 @@ const productos=[
 const ItemListContainer = ({nombre}) => {
 
   
-let [producto,setproducto]= useState([])
-
+  
+let [lista,setlista]= useState([])
 
 
 
     useEffect(() => {
 
-
-  
-      const promesa = new Promise((res,rej)=>{
+      const promesa1 = new Promise((res,rej)=>{
         setTimeout(() => {
-          res(productos)
+          res(productos)//array de productos//
         }, 2000);
       
       })
-      promesa
-      .then((productos)=>{
+      promesa1
+
+      .then((productosres)=>{
       console.log("ok")
-      setproducto(productos)
+      setlista(productosres) //parametro indentificador del array//
+    
       })
-    }, [])
+      .catch(()=>{
+        console.log("Todo mal")
+    })
+
+    },[])
 
 
+   
+      return ( 
+        lista.length === 0 ?
 
-
-    return (
-        <> 
+       (  <>
+          <div className="text-center m-5">
+              <Spinner animation="border" role="status"variant="info" ></Spinner>
+          </div>
+          </>)   :   
+        (
+            <> 
             <div>
                 <h2>Bienvenidos a TIENDA {nombre} </h2>
                 
             </div>
             <div>
-              <ItemList producto={productos}/>
+              <ItemList producto={lista}/> {/* le estoy pasando el estado*/}
             </div>
-            <ItemCount stock= {5}initial={0} onAdd={onAdd}/>
+            
             </> 
             )
+          )  
 }
 
 export default ItemListContainer
