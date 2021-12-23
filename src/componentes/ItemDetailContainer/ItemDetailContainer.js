@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import ItemDetail from './ItemDetail'
 import { Spinner } from 'react-bootstrap'
-
+import { useParams } from 'react-router-dom'
 const productodetail =
     {   
             "id":1,
@@ -14,13 +14,17 @@ const productodetail =
 const ItemDetailContainer = () => {
 
 
-let[producto, Setproducto]= useState({});
+const [producto, Setproducto]= useState({});
+const {id} = useParams()
+
 
 useEffect(() => {
+    
+
     const promesa2 = new Promise((res,rej)=>{
         setTimeout(() => {
         res(productodetail)// producto//
-        }, 4000);
+        }, 2000);
     })
     promesa2
     .then((productomues)=>{
@@ -31,7 +35,7 @@ useEffect(() => {
         .catch(()=>{
         console.log("Todo mal detalles")
 })
-}, [])
+}, [id])
 
 
 return (

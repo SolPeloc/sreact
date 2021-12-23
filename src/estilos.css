@@ -33,3 +33,17 @@ img{
     align-items:center;
 }
 
+.cardStyle{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+     
+}
+.imgProducts{
+    height: 400px;
+}
+main{
+    flex-grow: 1;
+    padding: 1rem;
+   
+}

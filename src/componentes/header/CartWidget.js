@@ -1,13 +1,12 @@
 
 import React from 'react'
+import { NavLink} from 'react-router-dom'
 
 const CartWidget = () => {
     return (
-        <div className="cartWidget" >
-               <span  className="material-icons">
-                shopping_bag
-                </span>
-        </div>
+        <> 
+        <NavLink  to="/Cart" className="material-icons cartWidget">shopping_cart</NavLink> 
+        </>
     )
 }
 

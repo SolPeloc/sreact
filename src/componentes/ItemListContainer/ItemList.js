@@ -1,7 +1,7 @@
-import React from 'react'
+
 import Item from './Item'
 
-const ItemList = ({producto}) => {
+const ItemList = ({lista}) => {
 
 
     return (
@@ -10,12 +10,13 @@ const ItemList = ({producto}) => {
         <h3>Nuestros productos</h3>
         </div>
             
-            <div>
-            {producto.map(producto =><Item 
-            key={producto.id}
-            nombre={producto.nombre}
-            precio={producto.precio} 
-            stock={producto.stock}/>)}
+            <div className='cardStyle '>
+            {lista.map(lista =><Item 
+            key={lista.id}
+            nombre={lista.nombre}
+            precio={lista.precio}
+            imagen={lista.imagen}
+            stock={lista.stock}/>)}
             </div>
         </> 
         )
