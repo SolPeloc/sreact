@@ -13,8 +13,8 @@ import Cart from "./componentes/Cart.js/Cart";
 function App(){
     const links = [
         { href: "/productos", name: "Productos", id:1 },
-        { href: "/categoria/1", name: "Mujer", id:2},
-        { href: "/categoria/2", name: "Accesorios", id:3},   
+        { href: "/categoria/sale", name: "Mujer", id:2},
+        { href: "/categoria/newin", name: "Accesorios", id:3},   
     ]
     return (
             <BrowserRouter>
@@ -24,7 +24,7 @@ function App(){
                     <Route path="/" element={<Home/>}/>
                     <Route path="/productos" element={<ItemListContainer nombre= "ATIA"/>} />
                     <Route path="/Cart" element={<Cart/>}/>
-                    <Route path="/categoria/:id" element={<ItemListContainer key={"ItemListContainer"} nombre= "ATIA"/>} />
+                    <Route path="/categoria/:categoria" element={<ItemListContainer key={"ItemListContainer"} nombre= "ATIA"/>} />
                     <Route path="/producto/:id" element={ <ItemDetailContainer key={"ItemDetailContainer"}/>} />
                 </Routes>  
                 </main>

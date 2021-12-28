@@ -15,6 +15,7 @@ const ItemDetail = ({producto}) => {
         <> 
         <div>
             <p>HOLA SON DETALLES</p>
+            <h4>id:{producto.id}</h4>
             <h3>nombre:{producto.nombre}</h3>
             <p> precio: ${producto.precio}</p>
             <img src={producto.imagen} alt="" />

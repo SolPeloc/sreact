@@ -11,65 +11,74 @@ const productos=[
           "id":1,
           "nombre":"BUZO MAX",
           "precio":2000,
-          "imagen":"media/mujer-buzo.png",
-          "stock":5,       
+          "imagen":"/media/mujer-buzo.png",
+          "stock":5,
+          "categoria":"sale",       
       },
       {
           "id":2,
           "nombre":"JEAN MONTANA ",
           "precio":3500,
-          "imagen":"media/mujer-jean.png",
+          "imagen":"/media/mujer-jean.png",
           "stock":5,
-      
+          "categoria":"sale", 
       },
       {
           "id":3,
           "nombre":"SACO CLARA",
           "precio":4200,
-          "imagen":"media/mujer-tapado.png",
+          "imagen":"/media/mujer-tapado.png",
           "stock":5,
+          "categoria":"sale", 
       },
       {
         "id":4,
         "nombre":"BUFANDA LOLA",
         "precio":1200,
-        "imagen":"media/acc-bufanda.png" ,
+        "imagen":"/media/acc-bufanda.png" ,
         "stock":5,
+        "categoria":"newin", 
     },
     {
       "id":5,
       "nombre":"BOINA SOL",
       "precio":1800,
-      "imagen":"media/acc-boina.png",
+      "imagen":"/media/acc-boina.png",
       "stock":5,
+      "categoria":"newin", 
   },
   {
     "id":6,
     "nombre":"GORRO SU",
     "precio":1500,
-    "imagen":"media/acc-gorro.png",
+    "imagen":"/media/acc-gorro.png",
     "stock":5,
+    "categoria":"newin", 
 },
       
 ]
 
 const ItemListContainer = ({nombre}) => {
+ 
+
+
+
 
 const [lista,setlista]= useState([])
 
-const {id}=useParams()
+const {categoria}=useParams()
 
 
 
     useEffect(() => {
      
-      const promesa1 = new Promise((res)=>{
+      const promesa1 = new Promise((res,rej)=>{
         setTimeout(() => {
-          if(!id){
+          if(!categoria){
             res(productos)//array de productos//
           }else{
-            res(productos.filter((prod) => prod.id == id))
-            console.log(id)
+            res(productos.filter((prod) => prod.categoria === categoria))
+            console.log(categoria)
           }
           
         }, 2000);
@@ -84,7 +93,7 @@ const {id}=useParams()
         console.log("Todo mal")
     })
 
-    },[id])
+    },[categoria])
 
 
    
