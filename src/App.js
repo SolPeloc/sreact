@@ -10,11 +10,12 @@ import { BrowserRouter,Routes,Route} from "react-router-dom";
 import Footer from "./componentes/Footer/Footer";
 import Home from "./componentes/Home.js/Home";
 import Cart from "./componentes/Cart.js/Cart";
+import datos from './datos.json';
 function App(){
     const links = [
         { href: "/productos", name: "Productos", id:1 },
-        { href: "/categoria/sale", name: "Mujer", id:2},
-        { href: "/categoria/newin", name: "Accesorios", id:3},   
+        { href: "/categoria/Mujer", name: "Mujer", id:2},
+        { href: "/categoria/Accesorios", name: "Accesorios", id:3},   
     ]
     return (
             <BrowserRouter>
@@ -22,10 +23,10 @@ function App(){
                 <main> 
                 <Routes> 
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/productos" element={<ItemListContainer nombre= "ATIA"/>} />
+                    <Route path="/productos" element={<ItemListContainer datos={datos} nombre= "ATIA"/>} />
                     <Route path="/Cart" element={<Cart/>}/>
-                    <Route path="/categoria/:categoria" element={<ItemListContainer key={"ItemListContainer"} nombre= "ATIA"/>} />
-                    <Route path="/producto/:id" element={ <ItemDetailContainer key={"ItemDetailContainer"}/>} />
+                    <Route path="/categoria/:categoria" element={<ItemListContainer datos={datos}  nombre= "ATIA"/>} />
+                    <Route path="/producto/:id" element={<ItemDetailContainer datos={datos}/>} />
                 </Routes>  
                 </main>
             <Footer/>

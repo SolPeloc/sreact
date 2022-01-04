@@ -1,0 +1,57 @@
+[
+  {   
+          "id":1,
+          "nombre":"BUZO MAX",
+          "precio":2000,
+          "imagen":"/media/mujer-buzo.png",
+          "descripcion":"Buzo 100% algodón, oversize",
+          "stock":5,
+          "categoria":"Mujer"       
+      },
+      {
+          "id":2,
+          "nombre":"JEAN MONTANA ",
+          "precio":3500,
+          "imagen":"/media/mujer-jean.png",
+          "descripcion":" Pantalon 5 bolsillos corte oxford, tiro alto, con avios metalicos, costuras en color camel ",
+          "stock":5,
+          "categoria":"Mujer"
+      },
+      {
+          "id":3,
+          "nombre":"SACO CLARA",
+          "precio":4200,
+          "imagen":"/media/mujer-tapado.png",
+          "descripcion":"Tapado de paño con bolsillo interno, color camel",
+          "stock":5,
+          "categoria":"Mujer" 
+      },
+      {
+        "id":4,
+        "nombre":"BUFANDA LOLA",
+        "precio":1200,
+        "imagen":"/media/acc-bufanda.png",
+        "descripcion":"Bufanda de hilo tejido",
+        "stock":5,
+        "categoria":"Accesorios"
+    },
+    {
+      "id":5,
+      "nombre":"BOINA SOL",
+      "precio":1800,
+      "imagen":"/media/acc-boina.png",
+      "descripcion":"Boina de pana, talle único",
+      "stock":5,
+      "categoria":"Accesorios" 
+  },
+  {
+    "id":6,
+    "nombre":"GORRO SU",
+    "precio":1500,
+    "imagen":"/media/acc-gorro.png",
+    "descripcion":"Gorro 100% algodón, talle único",
+    "stock":5,
+    "categoria":"Accesorios"
+}
+      
+]
