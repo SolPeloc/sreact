@@ -1,46 +1,43 @@
-import React, { useState,useEffect } from 'react'
+import { useState,useEffect } from 'react'
 import ItemDetail from './ItemDetail'
 import { Spinner } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
  
 const ItemDetailContainer = ({datos}) => {
-const {id}=useParams()
-    
-    
-const [producto, setProducto]= useState({});
+const {id} = useParams ()  
+const [seleccion, setSeleccion]= useState({});
 
 useEffect(() =>{ 
-    console.log(id)
+ 
     const promesa2 = new Promise((res,rej)=>{
         setTimeout(() => {
             if(!id){
                 res(datos) 
                 }else{
-                res(datos.filter(producto=>producto.id === id)) 
+                res(datos.find(prod => prod.id == id)) 
                 }
-        res(datos)// producto//
-        }, 2000);
+        },2000);
     })
     promesa2
-    .then((producto)=>{
+    .then((prod)=>{
         console.log("ok detalles")
-        setProducto(producto) //parametro indentificador del producto//
+        setSeleccion(prod) //parametro indentificador del producto//
         })
         .catch(()=>{
         console.log("Todo mal detalles")
 }) 
 
-}, [id])
+}, [id,datos])
 
 return (
-    !producto.length  === 0 ?    
+    !seleccion.length  === 0 ?    
     ( <>
     <div className="text-center m-5"> 
         <Spinner animation="border" role="status" variant="dark" ></Spinner>
     </div> 
 </> ) :
     (<div>
-            <ItemDetail producto={producto} /> {/*le estoy pasando el estado*/}
+            <ItemDetail producto={seleccion} /> {/*le estoy pasando el estado*/}
         </div>
 
     )   

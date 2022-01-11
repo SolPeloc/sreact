@@ -10,15 +10,11 @@ import { useParams } from 'react-router-dom'
 
 const ItemListContainer = ({datos,nombre}) => {
  
+  const [lista,setlista]= useState([])
 
-const [lista,setlista]= useState([])
-
-const {categoria}=useParams()
+  const {categoria} = useParams ()
  
-
-
     useEffect(() => {
-     
       const promesa1 = new Promise((res,rej)=>{
         setTimeout(() => {
           if(!categoria){
@@ -27,25 +23,22 @@ const {categoria}=useParams()
             res(datos.filter((prod) => prod.categoria === categoria))
             console.log(categoria)
           }
-          
         }, 2000);
-      
       })
-      promesa1.then((productosres)=>{
+      promesa1
+      .then((productosres)=>{
       console.log("ok")
       setlista(productosres) //parametro indentificador del array//
-    
       })
       .catch(()=>{
         console.log("Todo mal")
     })
+  }, [categoria,datos])
 
-    },[categoria])
+ 
 
-
-   
       return ( 
-        lista.length === 0 ?
+        !lista.length === 0 ?
 
        (  <>
           <div className="text-center m-5">
