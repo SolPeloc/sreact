@@ -2,12 +2,13 @@ import { useContexto } from "../Context/CartContext"
 import { Button,Table} from "react-bootstrap"
 import { Link } from "react-router-dom"
 const Cart = () => {
-        const{ carrito,BorrarDelCarrito,LimpiarCarrito,cantidad_total}= useContexto()
+        const{ carrito,BorrarDelCarrito,LimpiarCarrito,cantidad_total,precio_total}= useContexto()
          console.log(carrito)
     return (
          <>
           
             <h2>Tu carrito</h2>
+            
             <Table striped bordered hover>
   <thead>
     <tr>
@@ -28,8 +29,9 @@ const Cart = () => {
       <td>{producto.producto.categoria}</td>
       <td>{producto.cantidad}</td>
       <td>${producto.producto.precio}</td>{/*me falta resolver precio total*/}
+      <td>${precio_total} </td>
       <td></td>
-      <td><Button variant="dark" on click={BorrarDelCarrito}>x</Button></td>
+      <td><Button variant="dark" on click= {BorrarDelCarrito}>x</Button></td>
       
     </tr>
     

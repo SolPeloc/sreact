@@ -6,7 +6,7 @@ import { useContexto } from '../Context/CartContext'
 const CartWidget = () => {
 
     const {cantidad_total} = useContexto ()
-    console.log(cantidad_total)
+   
     
     
     return (

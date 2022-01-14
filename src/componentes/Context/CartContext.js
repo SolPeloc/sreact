@@ -19,7 +19,8 @@ const CostumProvider= ({children}) => {
         if(isInCart(producto.id)){
             let prod_en_carrito = carrito.find(p=>p.id ===producto.id)
             prod_en_carrito.cantidad += cantidad
-            
+           /* let preciototal=carrito.find(p=>p.precio===producto.precio)
+            preciototal.cantidad= cantidad*producto.precio*/
            SetCarrito([...carrito])
                 }else{
                 SetCarrito([...carrito,{
@@ -28,16 +29,21 @@ const CostumProvider= ({children}) => {
                 }])
             }
             setCantidadTotal(cantidad_total+cantidad)
-           
+          /* setPrecio_total(precio_total*cantidad)*/
     }
 
 
-    const BorrarDelCarrito = (id) => SetCarrito(carrito.filter(prod =>prod.id !==id))
-
+    const BorrarDelCarrito = (id,cantidad) => {
+        
+        let carritofiltrado=carrito.filter(prod =>prod.id !==id)
+        SetCarrito(carritofiltrado)
+        setCantidadTotal(cantidad_total-cantidad)
+    }
     //me falta esto//
 
     const LimpiarCarrito = () =>{
         SetCarrito([])
+        setCantidadTotal(0)
     }
     const isInCart = id =>carrito.find(producto => producto.id === id)
       
