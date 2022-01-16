@@ -19,7 +19,7 @@ const ItemDetail = ({producto}) => {
                 console.log(cantidad)//a modo de prueba para ver si el padre reciba la cant//
                 setOcultar(false)
                 setCantidad(cantidad)
-                AgregarAlCarrito(producto, cantidad)
+                AgregarAlCarrito( cantidad,producto)
                 
         }
 
@@ -33,7 +33,7 @@ const ItemDetail = ({producto}) => {
             <p> Precio: ${producto.precio}</p>
             <img src={producto.imagen} alt="" />
             <h2>Descripción:{producto.descripcion}</h2>
-            <ItemCount stock= {5}initial={0} onAdd={onAdd}/>
+            <ItemCount stock= {5}initial={1} onAdd={onAdd}/>
         </div>
         </>) : (<>
             <div>
@@ -45,7 +45,7 @@ const ItemDetail = ({producto}) => {
             <h2>Descripción:{producto.descripcion}</h2>
             <p> cantidad añadida:{cantidad}</p> 
             <Link to={`/cart`}><Button variant="info">Ir a Carrito</Button> </Link>
-            <Link to={`/productos`}><Button variant="secondary">Volver a Productos</Button> </Link>
+            <Link to={`/productos`}><Button variant="secondary">Seguir comprando</Button> </Link>
             </div>
             </> ) 
         )

@@ -14,44 +14,57 @@ const CostumProvider= ({children}) => {
     const [cantidad_total,setCantidadTotal] = useState(0)
     const [carrito,SetCarrito] = useState([])
     const [precio_total,setPrecio_total]=useState(0)
-    const AgregarAlCarrito = (producto,cantidad) =>{
 
-        if(isInCart(producto.id)){
-            let prod_en_carrito = carrito.find(p=>p.id ===producto.id)
-            prod_en_carrito.cantidad += cantidad
-           /* let preciototal=carrito.find(p=>p.precio===producto.precio)
-            preciototal.cantidad= cantidad*producto.precio*/
-           SetCarrito([...carrito])
+    const AgregarAlCarrito = (cantidad,producto) =>{
+        const id=producto.id
+        
+        
+        if(isInCart(id)){
+            const copia_carrito =[...carrito]
+            
+            let prod_en_carrito = copia_carrito.find((p)=>p.id ===producto.id)
+            prod_en_carrito.cantidad = prod_en_carrito.cantidad + cantidad 
+    
+           SetCarrito(copia_carrito)
+          
                 }else{
-                SetCarrito([...carrito,{
-                    producto,cantidad //pusheo//
-                   
-                }])
+                    const producto_mas_cantidad = {
+                        ...producto,
+                        cantidad
+                    }
+                    SetCarrito([...carrito,producto_mas_cantidad])  
             }
-            setCantidadTotal(cantidad_total+cantidad)
+           
+            setCantidadTotal(cantidad_total + cantidad)
           /* setPrecio_total(precio_total*cantidad)*/
     }
 
 
     const BorrarDelCarrito = (id,cantidad) => {
-        
-        let carritofiltrado=carrito.filter(prod =>prod.id !==id)
-        SetCarrito(carritofiltrado)
+        const copia= carrito.filter(producto=>(producto.id) !==id)
+        SetCarrito(copia)
         setCantidadTotal(cantidad_total-cantidad)
     }
-    //me falta esto//
+
+       
 
     const LimpiarCarrito = () =>{
         SetCarrito([])
         setCantidadTotal(0)
     }
-    const isInCart = id =>carrito.find(producto => producto.id === id)
-      
-     
+   
+
+    const isInCart = (id) => 
+    {
+      return  carrito.some((producto) => producto.id === id)
+    }
+ 
 
 
     const valorContexto={
             cantidad_total,
+            setPrecio_total,
+            setCantidadTotal,
             precio_total,
             carrito,
             SetCarrito,

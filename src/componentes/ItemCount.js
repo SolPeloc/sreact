@@ -27,9 +27,7 @@ const ItemCount = ({stock,initial,onAdd}) => {
         onAdd(contador)
         
         }
-        else{
-            alert("tu carrito esta vacio")
-        }
+        
     }
 
     return (
