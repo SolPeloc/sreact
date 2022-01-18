@@ -16,10 +16,10 @@ const ItemCount = ({stock,initial,onAdd}) => {
         }
 
         const restar =()=>{
-            if(contador>0 ){
+            if(contador>1 ){
                 setContador(contador -1)
             }
-        
+           
         }
 
     const AgregarCarrito=()=>{

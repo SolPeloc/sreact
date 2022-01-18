@@ -2,7 +2,7 @@ import { createContext,useContext, useState} from "react"
 
 
 const cartcontext = createContext({});//creo contexto//
-const {Provider} = cartcontext
+export const {Provider} = cartcontext
 
 //custom hook//
 export const useContexto = () => {
@@ -16,7 +16,7 @@ const CostumProvider= ({children}) => {
     const [precio_total,setPrecio_total]=useState(0)
 
     const AgregarAlCarrito = (cantidad,producto) =>{
-        const id=producto.id
+        const id = producto.id
         
         
         if(isInCart(id)){

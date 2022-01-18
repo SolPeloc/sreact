@@ -1,25 +1,27 @@
 import { useContexto } from "../Context/CartContext"
 import { Button,Table} from "react-bootstrap"
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
 const Cart = () => {
 
             const{ carrito,BorrarDelCarrito,LimpiarCarrito,setPrecio_total,precio_total}= useContexto()
           
 
-            let total = 0;
-            carrito.map(item => {
+            useEffect(() => {
+              let total = 0;
+              carrito.map(item => {
                 return total += item.cantidad * item.precio;
-               
-            })
-            setPrecio_total(total)
+              })
+              setPrecio_total(total)
+            }, [carrito,setPrecio_total])
            
            
         return (
             <>
             <h2>Tu carrito</h2>
               
-      {/*  {carrito.lenght > 0 ? (   */   }   
-      <> <Table hover>
+      {carrito.length > 0 ? (   
+      <> <Table  striped bordered >
                 <thead>
                   <tr>
                     <th>id</th>
@@ -40,16 +42,18 @@ const Cart = () => {
                     <td>{producto.cantidad}</td>
                     <td>${producto.precio}</td>
                     <td>${producto.precio * producto.cantidad} </td>
-                    <td><Button variant="dark" on click={() => BorrarDelCarrito(producto.id,producto.cantidad)}>x</Button></td>
-                    </tr>
-                      <div>Precio Total:{precio_total}</div>
+                    <td><Button variant="dark" onClick={() => BorrarDelCarrito(producto.id,producto.cantidad)}>x</Button></td>
+                    </tr>      
                 </tbody>)}
-              </Table>
+         </Table>
+              <div>
+                MontoTotal: ${precio_total}
+              </div>
               <Button variant="danger" onClick={() =>LimpiarCarrito()}>Vaciar carrito</Button>
-              </> {/*) :*/}
+              </>) : 
                   <> <p>no hay productos en el carrito </p>
                     <Link to={"/"}><Button variant="primary">Volver al Inicio</Button></Link>
-                  </> {/*}*/}
+                  </> }
 </>)
 
 }

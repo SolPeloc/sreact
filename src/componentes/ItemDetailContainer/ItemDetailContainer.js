@@ -2,32 +2,30 @@ import { useState,useEffect } from 'react'
 import ItemDetail from './ItemDetail'
 import { Spinner } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
- 
-const ItemDetailContainer = ({datos}) => {
+import { collection,getDoc,doc } from 'firebase/firestore'
+import { db } from '../../firebase'
+const ItemDetailContainer = () => {
+
 const {id} = useParams ()  
 const [seleccion, setSeleccion]= useState({});
 
-useEffect(() =>{ 
- 
-    const promesa2 = new Promise((res,rej)=>{
-        setTimeout(() => {
-            if(!id){
-                res(datos) 
-                }else{
-                res(datos.find(prod => prod.id == id)) 
-                }
-        },2000);
-    })
-    promesa2
-    .then((prod)=>{
-        console.log("ok detalles")
-        setSeleccion(prod) //parametro indentificador del producto//
-        })
-        .catch(()=>{
-        console.log("Todo mal detalles")
-}) 
+    useEffect(() => {
+        
+        const prodcollection = collection(db, "productos")
+        const refDoc = doc(prodcollection, id)
+  
+        getDoc(refDoc)
+          .then((resultado) => {
+              setSeleccion(resultado.data())
+              console.log(seleccion)//me tira undefined
+          })
+          .catch((error) =>{
+            console.log(error);
+          })
+  
+    }, [id]);
 
-}, [id,datos])
+
 
 return (
     !seleccion.length  === 0 ?    

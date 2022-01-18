@@ -7,7 +7,7 @@ import { useContexto } from '../Context/CartContext'
 import { Button } from 'react-bootstrap'
 //producto es un objeto//
 const ItemDetail = ({producto}) => {
- 
+
     const [ocultar, setOcultar] = useState(true)
     const [cantidad, setCantidad] = useState(0)
     const {AgregarAlCarrito}= useContexto([])
@@ -27,7 +27,7 @@ const ItemDetail = ({producto}) => {
             ocultar?
         (<> 
         <div>
-            <p>HOLA SOY DETALLES</p>
+            <p>Detalle:</p>
             <p>ID:{producto.id}</p>
             <h3>Nombre:{producto.nombre}</h3>
             <p> Precio: ${producto.precio}</p>

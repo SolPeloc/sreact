@@ -1,21 +1,50 @@
 
 import React from 'react'
 import { Spinner } from 'react-bootstrap'
-
-//componentes//
 import { useState,useEffect } from 'react'
 import ItemList from './ItemList'
 import { useParams } from 'react-router-dom'
+import { db } from '../../firebase'
+import {getDocs,query,collection,where} from "firebase/firestore"
+
 
 
 const ItemListContainer = ({datos,nombre}) => {
  
   const [lista,setlista]= useState([])
-
   const {categoria} = useParams ()
- 
+   
+  
     useEffect(() => {
-      const promesa1 = new Promise((res,rej)=>{
+
+      const prodcollection= collection(db,"productos")
+
+      
+
+      if (categoria) {
+          const consulta = query(prodcollection, where ("categoria", "==" , categoria))
+          getDocs(consulta)
+            .then(({ docs }) =>{
+              setlista(docs.map((doc) => ({ id: doc.categoria, ...doc.data() })))
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+      }else{
+        getDocs(prodcollection)
+         .then(({docs}) => {
+           setlista(docs.map((doc) =>({ id: doc.categoria, ...doc.data()})))
+         })
+         .catch((error)=>{
+           console.log(error);
+         })
+      }
+      
+  }, [categoria]);
+
+   console.log(lista)
+
+     /* const promesa1 = new Promise((res,rej)=>{
         setTimeout(() => {
           if(!categoria){
             res(datos)//array de productos//
@@ -33,10 +62,7 @@ const ItemListContainer = ({datos,nombre}) => {
       .catch(()=>{
         console.log("Todo mal")
     })
-  }, [categoria,datos])
-
- 
-
+  }, [categoria,datos])/*/
       return ( 
         !lista.length === 0 ?
 

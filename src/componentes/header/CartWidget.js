@@ -4,11 +4,7 @@ import { NavLink} from 'react-router-dom'
 import { useContexto } from '../Context/CartContext'
 
 const CartWidget = () => {
-
- const {cantidad_total} = useContexto ()
-   
- 
-
+const {cantidad_total} = useContexto () 
     return (
         <> 
             {cantidad_total > 0 ? ( 
