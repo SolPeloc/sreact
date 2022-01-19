@@ -13,17 +13,15 @@ const [seleccion, setSeleccion]= useState({});
         
         const prodcollection = collection(db, "productos")
         const refDoc = doc(prodcollection, id)
-  
+
         getDoc(refDoc)
-          .then((resultado) => {
-              setSeleccion(resultado.data())
-              console.log(seleccion)//me tira undefined
-          })
-          .catch((error) =>{
+        .then((resultado) => {
+            setSeleccion(resultado.data())   
+        })
+        .catch((error) =>{
             console.log(error);
-          })
-  
-    }, [id]);
+        })
+    }, [id,seleccion]);
 
 
 

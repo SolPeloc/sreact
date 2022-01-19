@@ -2,10 +2,34 @@ import { useContexto } from "../Context/CartContext"
 import { Button,Table} from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
+import { addDoc,collection,serverTimestamp } from "firebase/firestore"
+import { db } from "../../firebase"
 const Cart = () => {
 
-            const{ carrito,BorrarDelCarrito,LimpiarCarrito,setPrecio_total,precio_total}= useContexto()
+const{ carrito,BorrarDelCarrito,LimpiarCarrito,setPrecio_total,precio_total}= useContexto()
           
+  const finalizarCompra = () =>{
+
+    const ventas = collection(db,"ventas")
+      addDoc(ventas,{
+          buyer :{
+            name : "sol",
+            lastName : "p",
+            email : "mail@gmail"
+          },
+          items: carrito,
+          date: serverTimestamp(),
+          total : precio_total
+      })
+      .then((resultado) => { 
+      console.log(resultado)
+      LimpiarCarrito()
+      }) 
+      console.log(ventas)
+  }
+  
+
+
 
             useEffect(() => {
               let total = 0;
@@ -50,6 +74,7 @@ const Cart = () => {
                 MontoTotal: ${precio_total}
               </div>
               <Button variant="danger" onClick={() =>LimpiarCarrito()}>Vaciar carrito</Button>
+              <Button variant="info"onClick={finalizarCompra}>finalizarCompra</Button>
               </>) : 
                   <> <p>no hay productos en el carrito </p>
                     <Link to={"/"}><Button variant="primary">Volver al Inicio</Button></Link>
