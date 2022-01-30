@@ -4,13 +4,14 @@ import { NavLink} from 'react-router-dom'
 import { useContexto } from '../Context/CartContext'
 
 const CartWidget = () => {
+
 const {cantidad_total} = useContexto () 
     return (
         <> 
             {cantidad_total > 0 ? ( 
-            <><NavLink to="/Cart" className="material-icons cartWidget">shopping_cart</NavLink><span>{cantidad_total}</span></>
+            <><NavLink to="/Cart" ><img src="/media/carrito.png" alt="" className='iconoStyle traslate'/></NavLink> <span className='count'>{cantidad_total}</span></>
             ) : 
-                <span className="material-icons cartWidget">shopping_cart</span>  
+            <> <NavLink to="/Cart"> <img src="/media/carrito.png" alt=""className='iconoStyle traslate' /></NavLink> <span className='count'>{cantidad_total}</span> </>
             }
         </>
     )

@@ -4,7 +4,8 @@ import swal from 'sweetalert'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useContexto } from '../Context/CartContext'
-import { Button } from 'react-bootstrap'
+import { Button,Card } from 'react-bootstrap'
+
 //producto es un objeto//
 const ItemDetail = ({producto}) => {
 
@@ -12,11 +13,11 @@ const ItemDetail = ({producto}) => {
     const [cantidad, setCantidad] = useState(0)
     const {AgregarAlCarrito}= useContexto([])
     
+    
     const onAdd=(cantidad)=>{
         swal({ text:"añadido al carrito",
                 icon:"success" 
                 });
-                console.log(cantidad)//a modo de prueba para ver si el padre reciba la cant//
                 setOcultar(false)
                 setCantidad(cantidad)
                 AgregarAlCarrito( cantidad,producto)
@@ -26,28 +27,42 @@ const ItemDetail = ({producto}) => {
     return (
             ocultar?
         (<> 
-        <div>
-            <p>Detalle:</p>
-            <p>ID:{producto.id}</p>
-            <h3>Nombre:{producto.nombre}</h3>
-            <p> Precio: ${producto.precio}</p>
-            <img src={producto.imagen} alt="" />
-            <h2>Descripción:{producto.descripcion}</h2>
+            <Card style={{ width: '25rem' }} >
+            <Card.Img variant="top" src={producto.imagen} />
+            <Card.Body>
+            <Card.Title>Detalle: </Card.Title>
+            <Card.Subtitle className="mb-2 ">{producto.nombre}</Card.Subtitle>
+            <Card.Text>
+            {producto.descripcion}
+            </Card.Text>
+            <Card.Text>
+            Precio: ${producto.precio}
+            </Card.Text>
+            </Card.Body>
             <ItemCount stock= {5}initial={1} onAdd={onAdd}/>
-        </div>
-        </>) : (<>
-            <div>
-            <p>HOLA SOY DETALLES</p>
-            <p>ID:{producto.id}</p>
-            <h3>Nombre:{producto.nombre}</h3>
-            <p> Precio: ${producto.precio}</p>
-            <img src={producto.imagen} alt="" />
-            <h2>Descripción:{producto.descripcion}</h2>
-            <p> cantidad añadida:{cantidad}</p> 
-            <Link to={`/cart`}><Button variant="info">Ir a Carrito</Button> </Link>
-            <Link to={`/productos`}><Button variant="secondary">Seguir comprando</Button> </Link>
+            </Card>
+            </>) : (<>
+            <Card style={{ width: '25rem' }} >
+            <Card.Img variant="top" src={producto.imagen} />
+            <Card.Body>
+            <Card.Title>Detalle :</Card.Title>
+            <Card.Subtitle className="mb-2 ">{producto.nombre}</Card.Subtitle>
+            <Card.Text>
+            {producto.descripcion}
+            </Card.Text>
+            <Card.Text>
+            Precio: ${producto.precio}
+            </Card.Text>
+            <Card.Text>
+            cantidad añadida: {cantidad}
+            </Card.Text>
+            <div className='botones'> 
+            <Link to={`/cart`}><Button variant="info mr-2" >Ir a Carrito</Button> </Link>
+            <Link to={`/productos`}><Button variant="secondary" >Seguir comprando</Button> </Link>
             </div>
-            </> ) 
+            </Card.Body> 
+            </Card>
+        </> ) 
         )
 }
 

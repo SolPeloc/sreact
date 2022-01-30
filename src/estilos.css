@@ -9,41 +9,78 @@ html, body, #root{
     justify-content: space-between;
     background-color: rgb(248, 253, 255);
     box-shadow: 0px 1px 3px rgb(85, 84, 84);
+    padding-right: 10px;
 }
-
-img{
-    height: 70px;
-    margin-left: 16px;
-}
-.navStyle{
+#logo{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+        
 }
 
-.styleList{
-    list-style: none;
-    margin-right: 16px;
+.logosize{
+    height: 100px;
 }
 
-.cartWidget{
-    margin-right: 16px;
-    display: flex;
-    justify-content: flex-end;
-    align-items:center;
+
+
+.navstyle{
+    color: rgb(142, 121, 158);
+    text-decoration: none;
+    font-size: 18px;
+    padding:5px;
 }
+
 
 .cardStyle{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-     
+    flex-direction: row;
+    justify-content: center;
 }
+
+
+
 .imgProducts{
     height: 400px;
 }
 main{
     flex-grow: 1;
-    padding: 1rem;
-   
+    padding: 5rem;
+}
+
+
+.home{
+    margin: 15px;
+}
+.botones{
+    display: flex;
+    padding: 20px;
+}
+
+.iconoStyle {
+    width: 50px;
+    padding: 5px;
+} 
+.traslate:hover{
+        transform: scale(1.2);
+        }
+        
+.textStyle{
+    font-weight: bold;
+    font-family:sans-serif;
+    color: rgb(137, 55, 214);
+    background-color: rgb(195, 209, 195);
+}
+.count{
+    background-color: rgb(103, 188, 238);
+    border-radius: 50%;
+    width: 17px;
+    font-size: 15px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50px;
+    right: 12px;
 }

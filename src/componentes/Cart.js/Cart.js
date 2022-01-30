@@ -28,57 +28,55 @@ const{ carrito,BorrarDelCarrito,LimpiarCarrito,setPrecio_total,precio_total}= us
       console.log(ventas)
   }
   
-
-
-
             useEffect(() => {
               let total = 0;
               carrito.map(item => {
                 return total += item.cantidad * item.precio;
               })
               setPrecio_total(total)
-            }, [carrito,setPrecio_total])
-           
-           
+            }, [carrito,setPrecio_total])    
         return (
             <>
-            <h2>Tu carrito</h2>
+            <h2 className="text-center">Tu carrito</h2>
               
-      {carrito.length > 0 ? (   
-      <> <Table  striped bordered >
-                <thead>
-                  <tr>
-                    <th>id</th>
+  {carrito.length > 0 ? (   
+        <> <Table  striped bordered className="text-center">
+                <thead >
+                  <tr >
                     <th>Nombre</th>
                     <th>Categoria</th>
                     <th>Cantidad</th>
                     <th>Precio Unitario</th>
                     <th>Subtotal</th>
-                    <th>Eliminar</th>
+                    <th>Quitar</th>
                   </tr>
                 </thead>
                 {carrito.map((producto,indice) =>
-                 <tbody key= {indice}>
+                  <tbody key= {indice}>
                   <tr>
-                    <td> {producto.id}</td>
                     <td>{producto.nombre}</td>
                     <td>{producto.categoria}</td>
                     <td>{producto.cantidad}</td>
                     <td>${producto.precio}</td>
                     <td>${producto.precio * producto.cantidad} </td>
-                    <td><Button variant="dark" onClick={() => BorrarDelCarrito(producto.id,producto.cantidad)}>x</Button></td>
+                    <td><Button  variant="outline-light"
+                    onClick={() => BorrarDelCarrito(producto.id,producto.cantidad)}><img src="/media/tacho.jpg" alt=""/></Button></td>
                     </tr>      
                 </tbody>)}
-         </Table>
-              <div>
-                MontoTotal: ${precio_total}
+          </Table>
+              <div className="text-end textStyle">
+                  Total: ${precio_total}
               </div>
-              <Button variant="danger" onClick={() =>LimpiarCarrito()}>Vaciar carrito</Button>
-              <Button variant="info"onClick={finalizarCompra}>finalizarCompra</Button>
+              <div className="mt-3"> 
+                  <Button variant="danger " onClick={() =>LimpiarCarrito()}>Vaciar Carrito</Button>
+                  <Button variant="info"onClick={finalizarCompra}>Finalizar Compra</Button>
+              </div>
               </>) : 
-                  <> <p>no hay productos en el carrito </p>
-                    <Link to={"/"}><Button variant="primary">Volver al Inicio</Button></Link>
-                  </> }
+                  <div className="text-center"> 
+                      <p>No hay productos en tu carrito </p>
+                      <Link to={"/"}><Button variant="primary">Volver al Inicio</Button></Link>
+                  </div>
+    }
 </>)
 
 }

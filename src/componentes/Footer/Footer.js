@@ -15,11 +15,11 @@ const Footer = () => {
                     </Col>
                     <Col>
                         <p className="fs-3">Redes Sociales</p>
-                        <ul className="d-flex text-center justify-content-center">
-                            <li className="list-unstyled  ms-2 me-2"><a href="https://www.facebook.com/ATIAMULTIMARCA"> <img  src="/media/facebook.png" alt="face"/></a></li>
-                            <li className="list-unstyled  ms-2 me-2"><a href="https://www.instagram.com/atia_multimarca/"><img  src="/media/instagram.png" alt="ig"/></a></li>
+                        <div className="d-flex text-center justify-content-center">
+                            <a href="https://www.facebook.com/ATIAMULTIMARCA"> <img  src="/media/facebook.png" className="iconoStyle traslate"alt="face"/></a>
+                            <a href="https://www.instagram.com/atia_multimarca/"><img  src="/media/instagram.png"className="iconoStyle traslate " alt="ig"/></a>
                             
-                        </ul>
+                        </div>
                     </Col>
                 </Row>
                 </Container>

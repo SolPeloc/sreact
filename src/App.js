@@ -18,13 +18,13 @@ function App(){
     return (
         <CustomProvider> 
             <BrowserRouter>
-                <Navbar nombre="ATIA" links={links}/>
+                <Navbar links={links}/>
                 <main> 
                 <Routes> 
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/productos" element={<ItemListContainer datos={datos} nombre= "ATIA"/>} />
+                    <Route path="/productos" element={<ItemListContainer datos={datos} />} />
                     <Route path="/Cart" element={<Cart/>}/>
-                    <Route path="/categoria/:categoria" element={<ItemListContainer datos={datos}  nombre= "ATIA"/>} />
+                    <Route path="/categoria/:categoria" element={<ItemListContainer datos={datos} />} />
                     <Route path="/producto/:id" element={<ItemDetailContainer datos={datos}/>} />
                 </Routes>  
                 </main>

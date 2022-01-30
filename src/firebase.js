@@ -8,7 +8,7 @@ const firebaseConfig = {
     storageBucket: "sol-peloc.appspot.com",
     messagingSenderId: "16445648",
     appId: "1:16445648:web:ce6d2e47be76f429726ed5"
-  };
+};
 
   const app = initializeApp(firebaseConfig)
   export const db = getFirestore(app)

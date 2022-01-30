@@ -9,17 +9,15 @@ const ItemCount = ({stock,initial,onAdd}) => {
 
     const [contador,setContador] = useState(initial)
         const sumar =()=>{   
-
-        if(contador<stock){
-            setContador(contador +1)
-        }
+            if(contador<stock){
+                setContador(contador +1)
+            }
         }
 
         const restar =()=>{
             if(contador>1 ){
                 setContador(contador -1)
-            }
-           
+            }         
         }
 
     const AgregarCarrito=()=>{
@@ -30,21 +28,17 @@ const ItemCount = ({stock,initial,onAdd}) => {
         
     }
 
-    return (
-        <> 
+        return (
             <div>
-                
-                <Card style={{ width: '18rem' }} >
+                <Card border="light"style={{ width: '18rem' }} >
                 <Card.Body className='d-flex align-items-center justify-content-space-around'>
-                    <Card.Title ></Card.Title>
                     <Button onClick={sumar} variant="secondary">+</Button>
                     <p className="m-2">{contador}</p> 
                     <Button onClick={restar} variant="secondary">-</Button>
                     <Button onClick={AgregarCarrito} variant="primary">Agregar al carrito</Button>
                 </Card.Body>
                 </Card>
-                </div>
-        </> 
+            </div>  
         )
 }
 

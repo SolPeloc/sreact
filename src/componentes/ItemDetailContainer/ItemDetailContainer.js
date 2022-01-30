@@ -13,15 +13,15 @@ const [seleccion, setSeleccion]= useState({});
         
         const prodcollection = collection(db, "productos")
         const refDoc = doc(prodcollection, id)
-
         getDoc(refDoc)
         .then((resultado) => {
-            setSeleccion(resultado.data())   
+            const prod = {...resultado.data(), id}
+            setSeleccion(prod)   
         })
         .catch((error) =>{
             console.log(error);
         })
-    }, [id,seleccion]);
+    }, [id]);
 
 
 
@@ -32,7 +32,7 @@ return (
         <Spinner animation="border" role="status" variant="dark" ></Spinner>
     </div> 
 </> ) :
-    (<div>
+    (<div className='d-flex justify-content-center'>
             <ItemDetail producto={seleccion} /> {/*le estoy pasando el estado*/}
         </div>
 
