@@ -5,7 +5,7 @@ import { useState,useEffect } from 'react'
 import ItemList from './ItemList'
 import { useParams } from 'react-router-dom'
 import { db } from '../../firebase'
-import { getDocs, query, collection, where } from "firebase/firestore"
+import { getDocs, query, collection, where} from "firebase/firestore"
 
 
 const ItemListContainer = () => {
@@ -13,10 +13,42 @@ const ItemListContainer = () => {
   const [lista,setlista]= useState([])
   const {categoria} = useParams ()
   
-    useEffect(() => {
+  useEffect(() => {
     
       const prodcollection= collection(db,"productos")
-            if (categoria){
+
+             const consulta = (datos) =>{
+              getDocs(datos)
+              .then ((resultado) =>{
+                const docs = resultado.docs
+                const listado = docs.map((doc)=>{
+                  const id = doc.id
+                  const data = doc.data()
+                  const prods = {
+                    id :  id,
+                    ...data
+                  }
+                  return prods;
+                })
+                setlista(listado)
+
+              })
+              .catch((error)=>{
+                console.log(error);
+              })
+
+            }
+
+            if(categoria){
+              const consultas = query(prodcollection, where ("categoria", "==" , categoria))
+              consulta(consultas)
+            }else{
+              consulta(prodcollection)
+            }
+ },[categoria]);
+
+
+           /* if (categoria){
               const consulta = query(prodcollection, where ("categoria", "==" , categoria))
               getDocs(consulta)
               .then(({ docs }) =>{
@@ -35,7 +67,7 @@ const ItemListContainer = () => {
                 })
               }
       
-  }, [categoria]);
+  }, [categoria]);*/
 
     
       return ( 
@@ -49,7 +81,7 @@ const ItemListContainer = () => {
             <> 
             
             <div className='text-center'>
-              <ItemList lista={lista}/> {/* le estoy pasando el estado*/}
+              <ItemList lista={lista}/> 
             </div>
             
             </> 

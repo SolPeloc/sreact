@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useContexto } from '../Context/CartContext'
 import { Button,Card } from 'react-bootstrap'
 
-//producto es un objeto//
+
 const ItemDetail = ({producto}) => {
 
     const [ocultar, setOcultar] = useState(true)

@@ -6,9 +6,9 @@ import ItemDetailContainer from "./componentes/ItemDetailContainer/ItemDetailCon
 import Footer from "./componentes/Footer/Footer";
 import Home from "./componentes/Home.js/Home";
 import Cart from "./componentes/Cart.js/Cart";
-import datos from './datos.json';
 import { BrowserRouter,Routes,Route} from "react-router-dom";
 import CustomProvider from "./componentes/Context/CartContext"
+import Formulario from "./componentes/Formulario"
 function App(){
     const links = [
         { href: "/productos", name: "Productos", id:1 },
@@ -20,18 +20,19 @@ function App(){
             <BrowserRouter>
                 <Navbar links={links}/>
                 <main> 
-                <Routes> 
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/productos" element={<ItemListContainer datos={datos} />} />
-                    <Route path="/Cart" element={<Cart/>}/>
-                    <Route path="/categoria/:categoria" element={<ItemListContainer datos={datos} />} />
-                    <Route path="/producto/:id" element={<ItemDetailContainer datos={datos}/>} />
-                </Routes>  
+                    <Routes> 
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/productos" element={<ItemListContainer/>} />
+                        <Route path="/Cart" element={<Cart/>}/>
+                        <Route path="/categoria/:categoria" element={<ItemListContainer />} />
+                        <Route path="/producto/:id" element={<ItemDetailContainer/>} />
+                        <Route path="/Formulario" element={<Formulario/>} />
+                    </Routes>  
                 </main>
-            <Footer/>
+                <Footer/> 
             </BrowserRouter> 
-            </CustomProvider>
-            )
+        </CustomProvider>
+    )
 
 }
 

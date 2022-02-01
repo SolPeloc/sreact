@@ -2,7 +2,7 @@ import { useState,useEffect } from 'react'
 import ItemDetail from './ItemDetail'
 import { Spinner } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import { collection,getDoc,doc } from 'firebase/firestore'
+import { collection, getDoc , doc } from 'firebase/firestore'
 import { db } from '../../firebase'
 const ItemDetailContainer = () => {
 
@@ -15,7 +15,9 @@ const [seleccion, setSeleccion]= useState({});
         const refDoc = doc(prodcollection, id)
         getDoc(refDoc)
         .then((resultado) => {
-            const prod = {...resultado.data(), id}
+            const id = resultado.id
+            const data = resultado.data()
+            const prod = { id:id, ...data}
             setSeleccion(prod)   
         })
         .catch((error) =>{
@@ -33,7 +35,7 @@ return (
     </div> 
 </> ) :
     (<div className='d-flex justify-content-center'>
-            <ItemDetail producto={seleccion} /> {/*le estoy pasando el estado*/}
+            <ItemDetail producto={seleccion} /> 
         </div>
 
     )   

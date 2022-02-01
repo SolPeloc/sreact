@@ -9,7 +9,7 @@ const ItemList = ({lista}) => {
             <div>
                 <h3>Nuestros productos</h3>
             </div>
-                <div className='cardStyle  '>
+                <div className='cardStyle'>
                     {lista.map(lista =><Item 
                     key={lista.id}
                     nombre={lista.nombre}

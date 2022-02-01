@@ -12,7 +12,7 @@
 - sweetalert (mensajes estilados)
 # Descripción del proyecto:
 
- Este es un software que cree utilizando react js y  js vanilla, para un ecommerce, comprar y vender productos, basado en componentes con responsabilidades asignadas,
+ Este es un software que cree utilizando react js y  js vanilla, para un ecommerce, comprar y vender productos, basado en componentes con responsabilidades asignadas. Con un contexto, como estado global, que permite comunicación entre componentes que se encuentren en distintos niveles.
 
 
 # instalación de la app:
@@ -30,6 +30,7 @@ Ingresando a la pagina web, el usuario podra ver todos los productos disponibles
 - Clickeando en ver detalle, podra ingresar la cantidad de productos que quiere y agregar al carrito y tambien se le da la opcion de seguir comprando, donde lo lleva a todos los productos.
 - Cada producto agregado se ve en el carrito, al que se accede haciendo click en el icono del mismo (arriba a la derecha.) Se muestra tambien  la cantidad de productos agregados.
 - dentro del carrito se reflejará el detalle de todos los productos agregados con su precio unitario, subtotal y total del carrito. En el mismo podrá quitar productos y limpiar el carrito.
+ Por último contiene un botón de comprar, donde lo derivará a completar formulario de pedido, para finalizar la compra.
 # Demo:
 
 [titulo] 
@@ -37,7 +38,6 @@ Ingresando a la pagina web, el usuario podra ver todos los productos disponibles
 # Cosas a incluir a futuro:
 
  - Carrito alojado en LocalStorage
- - Formulario de pedido
  - App responsive
  - Subir a un servidor
 
