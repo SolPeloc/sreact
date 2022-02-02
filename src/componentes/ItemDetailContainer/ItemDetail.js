@@ -25,45 +25,45 @@ const ItemDetail = ({producto}) => {
         }
 
     return (
-            ocultar?
-        (<> 
-            <Card style={{ width: '25rem' }} >
-            <Card.Img variant="top" src={producto.imagen} />
-            <Card.Body>
-            <Card.Title>Detalle: </Card.Title>
-            <Card.Subtitle className="mb-2 ">{producto.nombre}</Card.Subtitle>
-            <Card.Text>
-            {producto.descripcion}
-            </Card.Text>
-            <Card.Text>
-            Precio: ${producto.precio}
-            </Card.Text>
-            </Card.Body>
-            <ItemCount stock= {5}initial={1} onAdd={onAdd}/>
-            </Card>
-            </>) : (<>
-            <Card style={{ width: '25rem' }} >
-            <Card.Img variant="top" src={producto.imagen} />
-            <Card.Body>
-            <Card.Title>Detalle :</Card.Title>
-            <Card.Subtitle className="mb-2 ">{producto.nombre}</Card.Subtitle>
-            <Card.Text>
-            {producto.descripcion}
-            </Card.Text>
-            <Card.Text>
-            Precio: ${producto.precio}
-            </Card.Text>
-            <Card.Text>
-            cantidad añadida: {cantidad}
-            </Card.Text>
-            <div className='botones'> 
-            <Link to={`/cart`}><Button variant="info mr-2" >Ir a Carrito</Button> </Link>
-            <Link to={`/productos`}><Button variant="secondary" >Seguir comprando</Button> </Link>
-            </div>
-            </Card.Body> 
-            </Card>
-        </> ) 
-        )
+                ocultar?
+            (
+                <Card style={{ width: '25rem' }} >
+                <Card.Img variant="top" src={producto.imagen} />
+                <Card.Body>
+                <Card.Title>Detalle: </Card.Title>
+                <Card.Subtitle className="mb-2 ">{producto.nombre}</Card.Subtitle>
+                <Card.Text>
+                {producto.descripcion}
+                </Card.Text>
+                <Card.Text>
+                Precio: ${producto.precio}
+                </Card.Text>
+                </Card.Body>
+                <ItemCount stock= {5}initial={1} onAdd={onAdd}/>
+                </Card>
+                ) : (
+                <Card style={{ width: '25rem' }} >
+                <Card.Img variant="top" src={producto.imagen} />
+                <Card.Body>
+                <Card.Title>Detalle :</Card.Title>
+                <Card.Subtitle className="mb-2 ">{producto.nombre}</Card.Subtitle>
+                <Card.Text>
+                {producto.descripcion}
+                </Card.Text>
+                <Card.Text>
+                Precio: ${producto.precio}
+                </Card.Text>
+                <Card.Text>
+                cantidad añadida: {cantidad}
+                </Card.Text>
+                <div className='botones'> 
+                <Link to={`/cart`}><Button variant="info mr-2" >Ir a Carrito</Button> </Link>
+                <Link to={`/productos`}><Button variant="secondary" >Seguir comprando</Button> </Link>
+                </div>
+                </Card.Body> 
+                </Card>
+            ) 
+    )
 }
 
 export default ItemDetail

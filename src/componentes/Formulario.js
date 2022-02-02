@@ -6,7 +6,7 @@ import { useContexto } from './Context/CartContext';
 import { Form,Button } from 'react-bootstrap';
 import { useState } from 'react';
 import swal from 'sweetalert';
-import { NavLink } from 'react-router-dom';
+
 const Formulario = () => {
   
   const {carrito, precio_total,LimpiarCarrito} = useContexto() ;
@@ -47,8 +47,8 @@ const Formulario = () => {
                                 <Form.Label>Correo Electrónico</Form.Label>
                                 <Form.Control type="email" placeholder="tucorreo@electronico.com" name="email"value={comprador.email} onChange={ecomprador} required />
                               </div>
-                              <NavLink to="/productos"> <Button variant="info"type="submit" onClick={finalizarCompra} disabled={
-                                !(comprador.nombre && comprador.email )}>Finalizar Compra </Button></NavLink>     
+                               <Button variant="info"type="submit" onClick={finalizarCompra} disabled={
+                                !(comprador.nombre && comprador.email )}>Finalizar Compra </Button>     
                         </Form>
                      </div>
           </>)

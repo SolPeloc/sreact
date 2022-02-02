@@ -14,77 +14,45 @@ const ItemListContainer = () => {
   const {categoria} = useParams ()
   
   useEffect(() => {
-    
-      const prodcollection= collection(db,"productos")
-
-             const consulta = (datos) =>{
-              getDocs(datos)
-              .then ((resultado) =>{
-                const docs = resultado.docs
-                const listado = docs.map((doc)=>{
-                  const id = doc.id
-                  const data = doc.data()
-                  const prods = {
-                    id :  id,
-                    ...data
+            const prodcollection= collection(db,"productos")
+                  const consulta = (datos) =>{
+                    getDocs(datos)
+                    .then ((resultado) =>{
+                      const docs = resultado.docs
+                      const listado = docs.map((doc)=>{
+                        const id = doc.id
+                        const data = doc.data()
+                        const prods = {
+                          id :  id,
+                          ...data
+                        }
+                        return prods;
+                      })
+                      setlista(listado)
+                    })
+                    .catch((error)=>{
+                      console.log(error);
+                    })
                   }
-                  return prods;
-                })
-                setlista(listado)
 
-              })
-              .catch((error)=>{
-                console.log(error);
-              })
-
-            }
-
-            if(categoria){
-              const consultas = query(prodcollection, where ("categoria", "==" , categoria))
-              consulta(consultas)
-            }else{
-              consulta(prodcollection)
-            }
- },[categoria]);
-
-
-           /* if (categoria){
-              const consulta = query(prodcollection, where ("categoria", "==" , categoria))
-              getDocs(consulta)
-              .then(({ docs }) =>{
-              setlista(docs.map((doc) => ({ id: doc.id, ...doc.data()})))
-              })
-              .catch((error) => {
-                console.log(error);
-                })
-            }else{
-                getDocs(prodcollection)
-                .then(({docs}) => {
-                setlista(docs.map((doc) =>({ id: doc.id, ...doc.data()})))   
-                })
-                .catch((error)=>{
-                  console.log(error);
-                })
-              }
-      
-  }, [categoria]);*/
-
-    
+                  if(categoria){
+                    const consultas = query(prodcollection, where ("categoria", "==" , categoria))
+                    consulta(consultas)
+                  }else{
+                    consulta(prodcollection)
+                  }
+            },[categoria]);
+          
       return ( 
-        !lista.length === 0 ?
-        (  <>
+        lista.length === 0 ?
+        (  
           <div className="text-center ">
               <Spinner animation="border" role="status"variant="info" ></Spinner>
           </div>
-          </>)   :   
-        (
-            <> 
-            
-            <div className='text-center'>
-              <ItemList lista={lista}/> 
-            </div>
-            
-            </> 
+          ) :   
+            ( <div className='text-center'>
+                <ItemList lista={lista}/> 
+              </div>
             )
           )  
 }

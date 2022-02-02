@@ -11,7 +11,7 @@ const {cantidad_total} = useContexto ()
             {cantidad_total > 0 ? ( 
             <><NavLink to="/Cart" ><img src="/media/carrito.png" alt="" className='iconoStyle traslate'/></NavLink> <span className='count'>{cantidad_total}</span></>
             ) : 
-            <> <NavLink to="/Cart"> <img src="/media/carrito.png" alt=""className='iconoStyle traslate' /></NavLink> <span className='count'>{cantidad_total}</span> </>
+            <> <NavLink to="/Cart"><img src="/media/carrito.png" alt=""className='iconoStyle traslate' /></NavLink> <span className='count'>{cantidad_total}</span> </>
             }
         </>
     )

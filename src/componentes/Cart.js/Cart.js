@@ -5,7 +5,7 @@ import { useEffect } from "react"
 
 const Cart = () => {
 
-        const{ carrito,BorrarDelCarrito,LimpiarCarrito,setPrecio_total,precio_total}= useContexto()
+      const{ carrito,BorrarDelCarrito,LimpiarCarrito,setPrecio_total,precio_total}= useContexto()
 
             useEffect(() => {
               let total = 0;
@@ -14,7 +14,8 @@ const Cart = () => {
               })
               setPrecio_total(total)
               
-            }, [carrito,setPrecio_total])    
+            },[carrito,setPrecio_total])    
+
     return (<>
                       <h2 className="text-center">Tu carrito</h2>
                         
