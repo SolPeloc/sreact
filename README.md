@@ -33,7 +33,7 @@ Ingresando a la pagina web, el usuario podra ver todos los productos disponibles
  Por último contiene un botón de comprar, donde lo derivará a completar formulario de pedido, para finalizar la compra.
 # Demo:
 
-[titulo] 
+![video] (https://github.com/SolPeloc/sreact/public/ATIAAPP.gif)
 
 # Cosas a incluir a futuro:
 
