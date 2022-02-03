@@ -32,8 +32,7 @@ Ingresando a la pagina web, el usuario podra ver todos los productos disponibles
 - dentro del carrito se reflejará el detalle de todos los productos agregados con su precio unitario, subtotal y total del carrito. En el mismo podrá quitar productos y limpiar el carrito.
  Por último contiene un botón de comprar, donde lo derivará a completar formulario de pedido, para finalizar la compra.
 # Demo:
-
-![video] (https://github.com/SolPeloc/sreact/public/ATIAAPP.gif)
+<img src="./public/ATIAAPP.gif"/>
 
 # Cosas a incluir a futuro:
 
