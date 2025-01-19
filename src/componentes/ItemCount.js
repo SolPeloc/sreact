@@ -32,9 +32,9 @@ const ItemCount = ({stock,initial,onAdd}) => {
             <div>
                 <Card border="light"style={{ width: '18rem' }} >
                 <Card.Body className='d-flex align-items-center justify-content-space-around'>
-                    <Button onClick={sumar} variant="secondary">+</Button>
+                <Button onClick={restar} variant="secondary">-</Button>
                     <p className="m-2">{contador}</p> 
-                    <Button onClick={restar} variant="secondary">-</Button>
+                    <Button onClick={sumar} variant="secondary">+</Button>
                     <Button onClick={AgregarCarrito} variant="primary">Agregar al carrito</Button>
                 </Card.Body>
                 </Card>
